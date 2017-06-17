@@ -32,5 +32,6 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $layout = 'santana';
+	public $components = ['Menu'];
 }
 
