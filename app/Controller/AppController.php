@@ -33,5 +33,12 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $layout = 'santana';
 	public $components = ['Menu'];
+
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$cat_menu = $this->Menu->getCatmenu();
+		$this->set(compact('cat_menu'));
+	}
 }
 

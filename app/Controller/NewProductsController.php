@@ -8,11 +8,17 @@
  */
 class NewProductsController extends AppController
 {
-	public $uses = ['Category'];
+	public $uses = ['Product'];
 
 	public function index(){
-		$cat_menu = $this->Menu->getCatmenu();
-		$this->set(compact('cat_menu'));
+		$new_products = $this->Product->find('all',
+				[
+					'conditions' => ['is_new' => 1],
+					'fields' => ['Product.id', 'Product.title', 'Product.price', 'Product.img'],
+					'recursive' => -1
+				]
+			);
+		$this->set(compact('new_products'));
 	}
 
 

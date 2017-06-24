@@ -57,7 +57,7 @@
 					<!--Left-->
 					<!--Center Logo-->
 					<li class="logo-box">
-						<h1 class="logo"><strong>Santana Commerce</strong><a href="#" title="Santana Commerce" class="logo"><img src="images/logo.png" alt="Santana Commerce" /></a></h1>
+						<h1 class="logo"><strong>Santana Commerce</strong><a href="#" title="Santana Commerce" class="logo"><img src="/images/logo.png" alt="Santana Commerce" /></a></h1>
 					</li>
 					<!--Center Logo-->
 
@@ -91,14 +91,9 @@
 		<!--END OF HEADER-->
 
 		<!--START OF MAIN CONTENT-->
-		<div class="main-container col1-layout">
-			<!--Start of Home Content-->
-			<div class="main">
+
 				<?php echo $this->fetch('content')?>
-			</div>
-			<!--End of Home Content-->
-			<div style="display: none;" id="back-top"> <a href="#"><img alt="" src="images/backtop.gif" /></a> </div>
-		</div>
+
 		<!--END OF MAIN CONTENT-->
 
 		<!--START OF FOOTER-->
