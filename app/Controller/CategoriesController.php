@@ -22,6 +22,28 @@ class CategoriesController extends AppController
 			throw new NotFoundException('такой страницы нет');
 		}
 
+		$cats = $this->Category->find('all');
+		$ids = $this->catIds($cats, $cat_id);
+		$ids = empty($ids) ? $cat_id : $ids.$cat_id;
+		$ids = explode(',', $ids);
+
+		$products = $this->Product->find('all', [	'fields' => ['Product.id', 'Product.title', 'Product.price', 'Product.img'],
+													'conditions' => ['Product.category_id' => $ids],
+													'recursive' => -1]);
+
+		return  $this->set((compact('products')));
+	}
+
+	private function catIds($cats, $cat_id){
+		$data = '';
+		foreach($cats as $item){
+			if($item['Category']['parent_id'] == $cat_id){
+				$data .= $item['Category']['id'].',';
+				$data .= $this->catIds($cats, $item['Category']['id']);
+			}
+
+		}
+		return $data;
 
 	}
 }

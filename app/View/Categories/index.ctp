@@ -7,6 +7,7 @@
 			</div>
 			<!--Category Image-->
 			<div class="category-products">
+				<?php if($products):?>
 				<!--Start toolbar-->
 				<div class="toolbar">
 					<div class="pagination">
@@ -23,86 +24,27 @@
 
 				<!--Start Category Product List-->
 
-				<?php debug($products);?>
+
 				<ul class="products-grid first odd">
-					<li class="item first"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="<?php echo 'product_img/zoom1.jpg' ?>" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="item first"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="#" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="item last"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="#" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="item first"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="#" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="item first"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="#" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="item last"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
-							<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array(''))?></a>
-						<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,">Lorem ipsum dolor sit amet,</a> </h2>
-						<div class="price-box"> <span class="regular-price"> <span class="price">$175.00</span> </span> </div>
-						<div class="actions">
-							<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-							<a href="<?php echo DS.IMAGES_URL.'product_img/zoom.jpg' ?>" class="fancybox quick_view">quick view</a>
-							<ul class="add-to-links">
-								<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-								<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
-							</ul>
-						</div>
-					</li>
+
+						<?php
+							$count = 1;
+							foreach($products as $product):?>
+							<li class="item <?php echo $count%3== 0? 'last' : 'first'; ?>"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
+									<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array('alt' => $product['Product']['title'])) ?></a>
+								<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,"><?php echo $product['Product']['title']?></a> </h2>
+								<div class="price-box"> <span class="regular-price"> <span class="price"><?php echo $product['Product']['price']?></span> </span> </div>
+								<div class="actions">
+									<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+									<a href="<?php echo '/'.IMAGES_URL.'product_img/zoom1.jpg' ?>" class="fancybox quick_view">quick view</a>
+									<ul class="add-to-links">
+										<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
+										<li class="last"><a href="#" class="link-compare">Add to Compare</a></li>
+									</ul>
+								</div>
+							</li>
+						<?php $count++; endforeach;?>
+
 				</ul>
 				<!--End Category Product List-->
 
@@ -121,6 +63,9 @@
 					</div>
 				</div>
 				<!--End toolbar bottom-->
+				<?php else :?>
+					<h3>Товары не найдены</h3>
+				<?php endif;?>
 			</div>
 		</div>
 		<div class="col-left sidebar">
