@@ -35,9 +35,9 @@
 						<?php
 							$count = 1;
 							foreach($products as $product):?>
-							<li class="item <?php echo $count%3== 0? 'last' : 'first'; ?>"> <a href="#" title="Lorem ipsum dolor sit amet," class="product-image">
+							<li class="item <?php echo $count%3== 0? 'last' : 'first'; ?>"> <a href="/product/<?php echo $product['Product']['id']?>" title="Lorem ipsum dolor sit amet," class="product-image">
 									<?php echo $this->Html->image('product_img/thumbs/pro1.jpg', array('alt' => $product['Product']['title'])) ?></a>
-								<h2 class="product-name"> <a href="#" title="Lorem ipsum dolor sit amet,"><?php echo $product['Product']['title']?></a> </h2>
+								<h2 class="product-name"> <a href="/product/<?php echo $product['Product']['id']?>" title="Lorem ipsum dolor sit amet,"><?php echo $product['Product']['title']?></a> </h2>
 								<div class="price-box"> <span class="regular-price"> <span class="price"><?php echo $product['Product']['price']?></span> </span> </div>
 								<div class="actions">
 									<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>

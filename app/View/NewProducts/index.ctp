@@ -31,9 +31,9 @@
 							<ul style="position: relative;" class="mix_gallery">
 								<?php foreach($new_products as $index => $new_product) :?>
 									<li class="item mix_row<?php if($index % 5 == 0) echo ' last'?>">
-										<div class="outer box"> <a href="#" class="product-image"><img src="images/pro1.jpg" alt="Imperdiet id tincidunt " /></a>
+										<div class="outer box"> <a href="/product/<?php echo $new_product['Product']['id']?>" class="product-image"><img src="images/pro1.jpg" alt="Imperdiet id tincidunt " /></a>
 											<div class="ic_caption">
-												<h2 class="product-name"><a href="#" title="<?php echo $new_product['Product']['title']?>"><?php echo $new_product['Product']['title']?> </a></h2>
+												<h2 class="product-name"><a href="/product/<?php echo $new_product['Product']['id']?>" title="<?php echo $new_product['Product']['title']?>"><?php echo $new_product['Product']['title']?> </a></h2>
 												<div class="actions">
 													<button style="display:none;" type="button" title="Add to Cart" class="button btn-cart"> <span> <span>Add to Cart</span> </span> </button>
 													<a rel="example_group" href="./images/zoom1.jpg" class="fancybox quickllook" id="fancybox170">Quick look</a>

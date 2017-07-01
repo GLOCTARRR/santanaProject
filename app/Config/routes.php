@@ -25,8 +25,8 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'newProducts', 'action' => 'index'));
-
 	Router::connect('/category/*', array('controller' => 'categories', 'action' => 'index'));
+	Router::connect('/product/*', array('controller' => 'products', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

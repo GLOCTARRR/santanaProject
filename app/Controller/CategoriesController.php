@@ -28,14 +28,14 @@ class CategoriesController extends AppController
 			$cats = $this->Category->find('all', ['conditions' => ['parent_id' => 0]]);
 
 			$cats_menu_sidebar = $this->_catsMenuSidebar($cats, $cat_id = 0);
-			$cats_menu_sidebar[$cat_id][$cat_id] = 'Catalog';
+			$cats_menu_sidebar[$cat_id][$cat_id] ='Catalog';
 			return $this->set(compact('products', 'cats_menu_sidebar', 'cat_id'));
 		}
 		if(!(int)$cat_id || !$this->Category->exists($cat_id)){
 			throw new NotFoundException('такой страницы нет');
-		}
+	}
 
-
+		$cats = $this->Category->find('all');
 		$ids = $this->catIds($cats, $cat_id);
 		$ids = empty($ids) ? $cat_id : $ids.$cat_id;
 		$ids = explode(',', $ids);
@@ -50,7 +50,7 @@ class CategoriesController extends AppController
 										'limit' => 3
 									];
 		$products = $this->Paginator->paginate('Product');
-		$cats = $this->Category->find('all');
+
 		$cats_menu_sidebar = $this->_catsMenuSidebar($cats, $cat_id);
 		return  $this->set((compact('products', 'cats_menu_sidebar', 'cat_id')));
 	}
