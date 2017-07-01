@@ -89,6 +89,13 @@ input[type=radio]{height:13px; width:13px;}
 .col1-layout .col-main { float:none; width:auto; }
 
 
+/* paginator */
+
+.pages span{
+	margin: 0 5px;
+}
+
+
 /* 2 Columns Layout */
 .col2-left-layout .col-main { float:right; }
 .col2-right-layout .col-main {}

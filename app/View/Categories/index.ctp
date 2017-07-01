@@ -12,11 +12,16 @@
 				<div class="toolbar">
 					<div class="pagination">
 						<div class="pages"> <strong>Page:</strong>
+							<?php echo $this->Paginator->counter(['separator' => ' из '])?>
+							<?php echo $this-> Paginator->first('<<')?>
 							<ol>
-								<li class="current">1</li>
-								<li><a href="#">2</a></li>
-								<li> <a class="next i-next" href="#" title="Next"></a> </li>
+								<?php echo $this->Paginator->numbers([
+									'tag' => 'li',
+									'separator' => '',
+									'modulus' => 4
+								]);	?>
 							</ol>
+							<?php echo $this-> Paginator->last('>>')?>
 						</div>
 					</div>
 				</div>
@@ -53,11 +58,16 @@
 					<div class="toolbar">
 						<div class="pagination">
 							<div class="pages"> <strong>Page:</strong>
+								<?php echo $this->Paginator->counter(['separator' => ' из '])?>
+								<?php echo $this-> Paginator->first('<<')?>
 								<ol>
-									<li class="current">1</li>
-									<li><a href="#">2</a></li>
-									<li> <a class="next i-next" href="#" title="Next"></a> </li>
+									<?php echo $this->Paginator->numbers([
+										'tag' => 'li',
+										'separator' => '',
+										'modulus' => 4
+									]);	?>
 								</ol>
+								<?php echo $this-> Paginator->last('>>')?>
 							</div>
 						</div>
 					</div>
@@ -72,14 +82,14 @@
 			<!--Start Magic Category Block-->
 			<div class="magicat-container">
 				<div class="block">
-					<div class="block-title cat_heading"> <strong><span>Womens</span></strong> </div>
-					<ul id="magicat">
-						<li class="first level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Sweaters</span></a></span> </li>
-						<li class="level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Knit Tops</span></a></span> </li>
-						<li class="level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Shirts &amp; Blouses</span></a></span> </li>
-						<li class="level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Tee Shirts</span></a></span> </li>
-						<li class="last level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Outerwear &amp; Jackets</span></a></span></li>
-					</ul>
+					<div class="block-title cat_heading"> <strong><span><?php echo $cats_menu_sidebar[$cat_id][$cat_id]?></span></strong> </div>
+					<?php if(!empty($cats_menu_sidebar[$cat_id]['children'])):?>
+						<?php foreach($cats_menu_sidebar[$cat_id]['children'] as $key => $value):?>
+							<ul id="magicat">
+								<li class="first level0-inactive level0 inactive"><span class="magicat-cat"><a href="/category/<?php echo $key?>"><span><?php echo $value?></span></a></span></li>
+							</ul>
+						<?php endforeach;?>
+					<?php endif;?>
 				</div>
 			</div>
 			<!--End Magic Category Block-->
