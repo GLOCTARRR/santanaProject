@@ -33,7 +33,7 @@ class CategoriesController extends AppController
 		}
 		if(!(int)$cat_id || !$this->Category->exists($cat_id)){
 			throw new NotFoundException('такой страницы нет');
-	}
+		}
 
 		$cats = $this->Category->find('all');
 		$ids = $this->catIds($cats, $cat_id);

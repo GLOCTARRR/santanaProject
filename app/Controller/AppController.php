@@ -38,7 +38,8 @@ class AppController extends Controller {
 	{
 		parent::beforeFilter();
 		$cat_menu = $this->Menu->getCatmenu();
-		$this->set(compact('cat_menu'));
+		$main_menu = $this->Menu->getMainMenu();
+		$this->set(compact('cat_menu', 'main_menu'));
 	}
 }
 

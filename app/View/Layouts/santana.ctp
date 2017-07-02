@@ -37,11 +37,7 @@
 				<!--End Toplinks-->
 
 				<!--Start Top Menu-->
-				<ul class="menu">
-					<li><a href="#">Главная</a></li>
-					<li><a href="#">О нас</a></li>
-					<li><a href="#">Контакты</a></li>
-				</ul>
+				<?php echo $this->element('main_menu')?>
 				<!--End Top Menu-->
 
 			</div>
@@ -67,7 +63,7 @@
 						<span>}</span>
 						<div id="search-bar">
 							<div class="top-bar">
-								<form id="search_mini_form" action="">
+								<form id="search_mini_form" action="/products/search/">
 									<div class="form-search">
 										<input
 											onfocus="if(this.value=='Search') {this.value=''};" onblur="if(this.value=='') {this.value='Search'};"

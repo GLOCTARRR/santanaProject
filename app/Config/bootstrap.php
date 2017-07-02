@@ -28,7 +28,7 @@ Cache::config('default', array('engine' => 'File'));
 Cache::config('short', array(
 	'engine' => 'File',
 	'duration' => 60,
-	'path' => CACHE . 'long' . DS,
+	'path' => CACHE . 'short' . DS,
 ));
 
 /**

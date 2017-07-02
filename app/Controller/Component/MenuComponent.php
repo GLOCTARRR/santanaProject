@@ -10,11 +10,24 @@ class MenuComponent extends Component
 {
 
 	public $categoryModel;
+	public $pageModel;
 
 	public function __construct($compnent)
 	{
 		parent::__construct($compnent);
 		$this->categoryModel = ClassRegistry::init('Category');
+		$this->pageModel = ClassRegistry::init('Page');
+
+	}
+
+	public function getMainMenu(){
+		$main_menu = Cache::read('main_menu', 'short');
+		if(empty($main_menu)){
+			$main_menu = $this->pageModel->find('all');
+			Cache::write('main_menu', $main_menu, 'short');
+		}
+		return $main_menu;
+
 	}
 
 	public function getCatMenu(){
