@@ -12,6 +12,10 @@
 
 						<div class="content">
 							<?php echo $page['Page']['body'];?>
+
+							<?php //debug($this->request->pass[])?>
+							<?php echo $this->Session->flash() ?>
+							<?php echo $page_alias == 'contacts' ? $this->element('contact_mail') : ''?>
 						</div>
 					<div class="clearer"></div>
 			</div>

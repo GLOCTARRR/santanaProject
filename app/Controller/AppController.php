@@ -31,13 +31,21 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $layout = 'santana';
-	public $components = ['Menu'];
+//	public $layout = 'santana';
+	public $components = ['Menu', 'Session', 'Auth' =>['loginRedirect' => '/admin', 'logoutRedirect' => '/', 'authenticate'=>['Form'=>['passwordHasher' => 'Blowfish']]]];
+	public $helpers = ['Html', 	'Form', 'Session'];
 
 	public function beforeFilter()
 	{
 		parent::beforeFilter();
-		$cat_menu = $this->Menu->getCatmenu();
+		$admin = (isset($this->request->params['prefix']) && $this->request->params['prefix']  == 'admin') ? 'admin/' : false;
+		if(!$admin) $this->Auth->allow();
+		if($admin){
+			$this->layout = 'admin_santana';
+		}else{
+			$this->layout = 'santana';
+		}
+		$cat_menu = $this->Menu->getCatmenu($admin);
 		$main_menu = $this->Menu->getMainMenu();
 		$this->set(compact('cat_menu', 'main_menu'));
 	}

@@ -1106,3 +1106,6 @@ a.prod-prev:hover { background: url("../images/decorative_prevbtn.png") no-repea
 	margin-right: 20px;
 	font-size: 15px;
 }
+label{
+	display: block;
+}

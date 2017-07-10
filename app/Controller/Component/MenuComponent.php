@@ -30,28 +30,33 @@ class MenuComponent extends Component
 
 	}
 
-	public function getCatMenu(){
+	public function getCatMenu($admin = false){
+		if($admin){
+			$cat_menu_tree = $this->categoryModel->find('threaded');
+			$cat_menu = $this->_catMenuHtml($cat_menu_tree, $admin);
+			return $cat_menu;
+		}
 		$cat_menu = Cache::read('cat_menu', 'short');
 		if(empty($cat_menu)){
 			$cat_menu_tree = $this->categoryModel->find('threaded');
-			$cat_menu = $this->_catMenuHtml($cat_menu_tree);
+			$cat_menu = $this->_catMenuHtml($cat_menu_tree, $admin);
 			Cache::write('cat_menu', $cat_menu, 'short');
 		}
 		return $cat_menu;
 	}
 
-	protected function _catMenuHtml($cat_menu_tree = false){
+	protected function _catMenuHtml($cat_menu_tree = false, $admin){
 		if(!$cat_menu_tree)
 			return false;
 
 		$html='';
 		foreach($cat_menu_tree as $category){
-			$html .= $this->_catMenuTemplate($category);
+			$html .= $this->_catMenuTemplate($category, $admin);
 		}
 		return $html;
 	}
 
-	protected function _catMenuTemplate($category){
+	protected function _catMenuTemplate($category, $admin){
 		ob_start();
 		include APP . 'View' . DS .'Elements' . DS . 'menu_tpl.ctp';
 		return ob_get_clean();

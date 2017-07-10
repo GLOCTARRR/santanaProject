@@ -12,6 +12,11 @@ class CategoriesController extends AppController
 	public $components = ['Paginator'];
 //	public $helpers = ['Paginator'];
 
+
+	public function admin_index($cat_id = null){
+		$this->index($cat_id);
+	}
+
 	public function index($cat_id = null){
 
 		if(is_null($cat_id)){

@@ -2,21 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title><?php echo $this->fetch('title'); ?></title>
+	<title>Admin part<?php echo $this->fetch('title'); ?></title>
 	<?php
-		echo $this->Html->meta('icon');
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+	echo $this->Html->meta('icon');
+	echo $this->fetch('meta');
+	echo $this->fetch('css');
+	echo $this->fetch('script');
 	?>
 
 	<?php
-		echo $this->Html->css(['http://fonts.googleapis.com/css?family=Telex', 'styles', 'skin', 'cloud-zoom', 'light_box', 'mix', 'banner', 'magicat']);
+	echo $this->Html->css(['http://fonts.googleapis.com/css?family=Telex', 'styles', 'skin', 'cloud-zoom', 'light_box', 'mix', 'banner', 'magicat']);
 	?>
 
 	<?php
-		echo $this->Html->script(['prototype', 'jquery-1.6.1.min', 'common', 'menu', 'banner_pack', 'light_box', 'cloud-zoom.1.0.2', 'jquery.easing.1.3', 'jquery.jcarousel.min', 'jquery.mix'],
-			['block' => 'scriptBottom'])
+	echo $this->Html->script(['prototype', 'jquery-1.6.1.min', 'common', 'menu', 'banner_pack', 'light_box', 'cloud-zoom.1.0.2', 'jquery.easing.1.3', 'jquery.jcarousel.min', 'jquery.mix'],
+		['block' => 'scriptBottom'])
 	?>
 
 
@@ -96,42 +96,10 @@
 
 		<!--START OF MAIN CONTENT-->
 
-				<?php echo $this->fetch('content')?>
+		<?php echo $this->fetch('content')?>
 
 		<!--END OF MAIN CONTENT-->
 
-		<!--START OF FOOTER-->
-		<div class="footer-container">
-			<div class="footer">
-				<div class="f-fix">
-					<div class="frame">.</div>
-					<!--Shipping Block-->
-					<div class="free-shipping">Enjoy free shipping <span>on all orders as our holiday gift for you!</span></div>
-					<!--Shipping Block-->
-
-					<!--Newsletter-->
-					<form method="post" id="newsletter-validate-detail" action="">
-						<div class="form-subscribe">
-							<div class="form-subscribe-header">Sign up for newsletter</div>
-							<div class="input-box">
-								<input
-									onfocus="if(this.value=='Enter email address') {this.value=''};" onblur="if(this.value=='') {this.value='Enter email address'};"
-									value="Enter email address" name="email" id="newsletter" title="Sign up for newsletter" class="input-text required-entry validate-email" type="text" />
-								<button type="submit" title="Submit" class="button"><span>Submit</span></button>
-							</div>
-						</div>
-					</form>
-					<!--Newsletter-->
-
-				</div>
-				<div class="f-left bottom_links">
-				</div>
-			</div>
-			<address>
-				© 2012 Santana Demo Store. All Rights Reserved. Design &amp; Develop by <a href="http://www.magicdesignlabs.com/">MagicDesignLabs</a>
-			</address>
-		</div>
-		<!--END OF FOOTER-->
 	</div>
 </div>
 

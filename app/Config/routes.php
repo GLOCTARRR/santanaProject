@@ -29,6 +29,11 @@
 	Router::connect('/product/*', array('controller' => 'products', 'action' => 'index'));
 	Router::connect('/search/*', array('controller' => 'products', 'action' => 'search'));
 	Router::connect('/page/*', array('controller' => 'pages', 'action' => 'index'));
+
+
+	Router::connect('/admin', array('controller' => 'categories', 'action' => 'index', 'admin' => true));
+	Router::connect('/admin/category/*', array('controller' => 'categories', 'action' => 'index', 'admin' => true));
+	Router::connect('/admin/user/:action', array('controller' => 'users'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
