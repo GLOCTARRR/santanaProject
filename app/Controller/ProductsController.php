@@ -12,6 +12,33 @@ class ProductsController extends AppController
 
 	public $components = ['Paginator'];
 
+
+	public function admin_edit($product_id = null){
+		if(is_null($product_id) || !(int)$product_id){
+			throw new NotFoundException('такой страницы нет');
+		}
+		$product = $this->Product->findById($product_id);
+		if(empty($product)){
+			throw new NotFoundException('такого продукта нет');
+		}
+
+		if($this->request->is(['post', 'put'])){
+			$this->Product->id = $product_id;
+			if($this->Product->save($this->request->data)){
+			 	$this->Session->setFlash('Сохранено', 'default', ['class' => 'ок']);
+				 return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', ['class' => 'error']);
+			}
+		}
+
+		if(empty($this->request->data)){
+			$this->request->data = $product;
+			$categories = $this->Product->Category->find('list');
+			$this->set(compact('product', 'categories'));
+		}
+	}
+
 	public function index($product_id = null){
 		if(is_null($product_id) || !(int)$product_id || !$this->Product->exists($product_id)){
 			throw new NotFoundException('такой страницы нет');

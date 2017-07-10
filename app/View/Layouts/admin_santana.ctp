@@ -95,6 +95,7 @@
 		<!--END OF HEADER-->
 
 		<!--START OF MAIN CONTENT-->
+		<?php echo $this->Session->flash(); ?>
 
 		<?php echo $this->fetch('content')?>
 

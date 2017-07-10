@@ -9,4 +9,15 @@
 class Product extends AppModel
 {
 	public $belongsTo = 'Category';
+
+	public $validate =[
+		'title' =>[
+			'rule' => 'notEmpty',
+			'message' => 'введите название товара'
+		],
+		'body' =>[
+			'rule' => 'notEmpty',
+			'message' => 'добавте описание товара'
+		]
+	];
 }

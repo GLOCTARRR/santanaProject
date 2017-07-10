@@ -33,7 +33,8 @@
 
 	Router::connect('/admin', array('controller' => 'categories', 'action' => 'index', 'admin' => true));
 	Router::connect('/admin/category/*', array('controller' => 'categories', 'action' => 'index', 'admin' => true));
-	Router::connect('/admin/user/:action', array('controller' => 'users'));
+	Router::connect('/admin/user/:action', array('controller' => 'users', 'admin' => true));
+	Router::connect('/admin/product/:action/*', ['controller' => 'products', 'admin' => true]);
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
