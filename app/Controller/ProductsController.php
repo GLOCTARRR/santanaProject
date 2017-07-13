@@ -34,10 +34,18 @@ class ProductsController extends AppController
 
 		if(empty($this->request->data)){
 			$this->request->data = $product;
-			$categories = $this->Product->Category->find('list');
-			$this->set(compact('product', 'categories'));
+//			$categories = $this->Product->Category->find('list');
+			$cats = $this->Category->find('threaded', ['fields' => ['id', 'title', 'parent_id']]);
+			$categories = $this->_catsSelect($cats, $product);
 		}
+		$this->set(compact('product', 'categories'));
 	}
+
+
+
+
+
+
 
 	public function index($product_id = null){
 		if(is_null($product_id) || !(int)$product_id || !$this->Product->exists($product_id)){
@@ -74,6 +82,20 @@ class ProductsController extends AppController
 		$this->set(compact('search_res', 'cats_menu_sidebar', 'cat_id'));
 	}
 
+	protected function _catsSelect($cats, $product, $tab = ''){
+		$html='';
+		foreach($cats as $item){
+			$html .= $this->_catSelectTemplate($item, $product, $tab);
+		}
+		return $html;
+	}
+
+	protected function _catSelectTemplate($category, $product, $tab){
+		ob_start();
+		include APP . 'View' . DS .'Elements' . DS . 'cats_select_tpl.ctp';
+		return ob_get_clean();
+	}
+
 	protected function _catsMenuSideBar($cats, $cat_id){
 		$data = [];
 		foreach($cats as $item){
@@ -99,4 +121,5 @@ class ProductsController extends AppController
 		return $data;
 
 	}
+
 }
