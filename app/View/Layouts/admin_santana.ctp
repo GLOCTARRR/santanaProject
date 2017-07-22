@@ -15,6 +15,10 @@
 	?>
 
 	<?php
+		echo $this->Html->script('ckeditor/ckeditor.js')
+	?>
+
+	<?php
 	echo $this->Html->script(['prototype', 'jquery-1.6.1.min', 'common', 'menu', 'banner_pack', 'light_box', 'cloud-zoom.1.0.2', 'jquery.easing.1.3', 'jquery.jcarousel.min', 'jquery.mix'],
 		['block' => 'scriptBottom'])
 	?>

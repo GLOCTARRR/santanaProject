@@ -13,8 +13,11 @@ echo $this->Form->create('Product');
 
 <?php
 echo $this->Form->input('title');
-echo $this->Form->input('body');
+echo $this->Form->input('body', ['id' => 'editor']);
 echo $this->Form->input('price');
 echo $this->Form->input('is_new', [	'type' => 'checkbox', 'label' => 'Новинка']);
 echo $this->Form->end('save');
 ?>
+<script>
+	CKEDITOR.replace('editor');
+</script>

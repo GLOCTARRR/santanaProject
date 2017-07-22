@@ -38,6 +38,9 @@ class AppController extends Controller {
 	public function beforeFilter()
 	{
 		parent::beforeFilter();
+		if(AuthComponent::user()){
+			$_SESSION['KCFINDER'] = ['disabled' => false];
+		}
 		$admin = (isset($this->request->params['prefix']) && $this->request->params['prefix']  == 'admin') ? 'admin/' : false;
 		if(!$admin) $this->Auth->allow();
 		if($admin){
