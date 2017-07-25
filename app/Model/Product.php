@@ -18,6 +18,10 @@ class Product extends AppModel
 		'body' =>[
 			'rule' => 'notEmpty',
 			'message' => 'добавте описание товара'
+		],
+		'price' =>[
+			'rule' => 'numeric',
+			'message' => 'Введите цену товара'
 		]
 	];
 }

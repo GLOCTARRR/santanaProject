@@ -40,7 +40,11 @@
 								<h2 class="product-name"> <a href="/admin/product/edit/<?php echo $product['Product']['id']?>" title="Lorem ipsum dolor sit amet,"><?php echo $product['Product']['title']?></a> </h2>
 								<div class="price-box"> <span class="regular-price"> <span class="price"><?php echo $product['Product']['price']?></span> </span> </div>
 								<div class="actions">
-									<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+									<?php
+//									echo $this->Form->postLink('Удалить', "admin/products/delete/{$product['Product']['id']}", ['confirm' => 'Удалить товар'])
+									echo $this->Form->postLink('Удалить', ['controller'=>'products', 'action' => 'delete', $product['Product']['id'] ], ['confirm' => 'Удалить товар'])
+									?>
+<!--									<button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>-->
 									<a href="<?php echo '/'.IMAGES_URL.'product_img/zoom1.jpg' ?>" class="fancybox quick_view">quick view</a>
 									<ul class="add-to-links">
 										<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
@@ -78,18 +82,7 @@
 				<?php endif;?>
 			</div>
 		</div>
-		<div class="col-left sidebar">
-			<!--Start Magic Category Block-->
-			<div class="magicat-container">
-				<div class="block">
-					<div class="block-title cat_heading"> <strong><span>Меню админки</span></strong> </div>
-							<ul id="magicat">
-								<li class="first level0-inactive level0 inactive"><span class="magicat-cat"><a href="#"><span>Редактирование профиля</span></a></span></li>
-							</ul>
-				</div>
-			</div>
-			<!--End Magic Category Block-->
-		</div>
+		<?php echo $this->Element('menu_sidebar')?>
 	</div>
 	<div style="display: none;" id="back-top"> <a href="#"><img alt="" src="/images/backtop.gif"/></a> </div>
 </div>

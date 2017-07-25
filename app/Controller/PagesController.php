@@ -32,4 +32,60 @@ class PagesController extends AppController {
 		}
 
 	}
+
+	public function admin_add(){
+		if($this->request->is(['post', 'put'])){
+			$this->Page->create();
+			if($this->Page->save($this->request->data)){
+				$this->Session->setFlash('Страница добавлена', 'default', ['class' => 'ок']);
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', ['class' => 'error']);
+			}
+		}
+	}
+
+	public function admin_edit($page_id = null){
+		if(is_null($page_id) || !(int)$page_id){
+			throw new NotFoundException('такой страницы нет');
+		}
+		$page = $this->Page->findById($page_id);
+		if(empty($page)){
+			throw new NotFoundException('такого продукта нет');
+		}
+
+		if($this->request->is(['post', 'put'])){
+			$this->Page->id = $page_id;
+			if($this->Page->save($this->request->data)){
+				$this->Session->setFlash('Сохранено', 'default', ['class' => 'ок']);
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', ['class' => 'error']);
+			}
+		}
+		if(empty($this->request->data)){
+			$this->request->data = $page;
+		}
+		$this->set(compact('page'));
+	}
+
+	public function admin_delete($id){
+		if($this->request->is('get')){
+			throw new MethodNotAllowedException();
+		}
+
+		if($this->Product->delete($id)){
+			$this->Session->setFlash('Страница удалена', 'default', ['class' => 'ок']);
+
+		} else {
+			$this->Session->setFlash('Ошибка', 'default', ['class' => 'error']);
+		}
+		return $this->redirect($this->referer());
+	}
+
+
+	public function admin_index(){
+		$pages = $this->Page->find('all', ['fields' => ['id', 'title']]);
+		$this->set(compact('pages'));
+	}
 }
